@@ -1,0 +1,223 @@
+:root {
+    --primary: #28a745;
+    --secondary: #6c757d;
+    --success: #198754;
+    --info: #0dcaf0;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #212529;
+}
+
+body { 
+    background: linear-gradient(to bottom, #e6f4ea, #c8e6c9);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 1400px;
+    padding: 2rem;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary), #1e7e34);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border: none;
+    margin-bottom: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    background: white;
+    border-bottom: 2px solid var(--light);
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 1.2rem 1.5rem;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.analysis-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: scale(1.03);
+}
+
+.stat-card.healthy { border-left: 5px solid var(--success); }
+.stat-card.medium { border-left: 5px solid var(--warning); }
+.stat-card.unhealthy { border-left: 5px solid var(--danger); }
+.stat-card.yield { border-left: 5px solid var(--primary); }
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.stat-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.validation-alert {
+    display: none;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    padding: 1.2rem;
+}
+
+.chart-container {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    height: 400px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.model-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+}
+
+.history-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--primary);
+}
+
+.loading-spinner {
+    display: none;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 10px;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+}
+
+.health-indicator {
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    background: linear-gradient(to right, var(--danger), var(--warning), var(--success));
+}
+
+.health-value {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.exact-match {
+    color: #198754;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .analysis-image {
+        height: 250px;
+    }
+}
