@@ -153,7 +153,10 @@ def process_image(image_data: bytes, field_width_m: float, field_height_m: float
         # Calculate yield using model if available, else linear model
         model_type = "linear"
         if model:
-            input_data = [[healthy_area, medium_area, unhealthy_area, field_width_m, field_height_m]]
+            input_data = pd.DataFrame(
+                [[healthy_area, medium_area, unhealthy_area, field_width_m, field_height_m]],
+                columns=['healthy_area', 'medium_area', 'unhealthy_area', 'width', 'height']
+            )
             yield_kg = model.predict(input_data)[0]
             model_type = "ML"
         else:
@@ -166,7 +169,7 @@ def process_image(image_data: bytes, field_width_m: float, field_height_m: float
 
         return {
             "processed_image": processed_image_b64,
-            "estimated_yield": yield_kg,
+            "estimated_yield": round(float(yield_kg), 2),
             "model_type": model_type,
             "stats": {
                 "healthy": round(healthy_area, 2),
@@ -260,7 +263,6 @@ async def save_actual_yield(data: dict):
             content={"message": f"Error saving data: {str(e)}"}
         )
 
-# Endpoint for fetching historical data
 @app.get("/history")
 async def get_history(limit: int = Query(5, gt=0, le=50)):
     try:
